@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>À propos — ProjeXpert</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue-deep: #0a1628; --blue-mid: #0d2347; --blue-bright: #1a6bff;
+      --blue-electric: #4d9fff; --blue-glow: #00c3ff; --accent: #00e5ff;
+      --white: #f0f6ff; --text-muted: #8aa4c8; --glass: rgba(13,35,71,0.6);
+      --border: rgba(77,159,255,0.2);
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--blue-deep); color: var(--white); overflow-x: hidden; }
+    .bg-grid { position: fixed; inset: 0; z-index: 0; background-image: linear-gradient(rgba(26,107,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(26,107,255,0.04) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+    .bg-orb { position: fixed; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
+    .orb1 { width: 500px; height: 500px; background: rgba(26,107,255,0.1); top: 100px; right: -150px; animation: float1 9s ease-in-out infinite; }
+    .orb2 { width: 300px; height: 300px; background: rgba(0,229,255,0.07); bottom: 200px; left: 0; animation: float2 12s ease-in-out infinite; }
+    @keyframes float1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-20px,30px)} }
+    @keyframes float2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(20px,-20px)} }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 4rem; background: rgba(10,22,40,0.85); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; background: linear-gradient(135deg, var(--blue-electric), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 1px; background: var(--accent); transition: width 0.3s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-cta { padding: 0.55rem 1.4rem; border-radius: 6px; background: var(--blue-bright); color: var(--white); font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: all 0.3s; border: 1px solid transparent; }
+    .nav-cta:hover { background: transparent; border-color: var(--blue-bright); color: var(--blue-electric); }
+    .menu-toggle{
+    display:none;
+    font-size:2rem;
+    color:white;
+    cursor:pointer;
+}
+
+    .page-hero { position: relative; z-index: 1; padding: 10rem 2rem 5rem; text-align: center; }
+    .section-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue-electric); font-weight: 600; margin-bottom: 1rem; }
+    .page-hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.03em; animation: fadeUp 0.8s ease both; }
+    .page-hero h1 span { background: linear-gradient(135deg, var(--blue-electric), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .page-hero p { max-width: 520px; margin: 1.2rem auto 0; color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; font-weight: 300; animation: fadeUp 0.8s 0.2s ease both; }
+
+    .about-content { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 2rem 2rem 6rem; }
+
+    /* VISION */
+    .vision-section { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 5rem; }
+    .vision-text h2 { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.2rem; line-height: 1.2; }
+    .vision-text h2 span { background: linear-gradient(135deg, var(--blue-electric), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .vision-text p { color: var(--text-muted); line-height: 1.8; font-size: 0.95rem; font-weight: 300; margin-bottom: 1rem; }
+    .vision-card {
+      background: var(--glass); border: 1px solid var(--border); border-radius: 20px;
+      padding: 2.5rem; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+    }
+    .vision-card .quote { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 600; line-height: 1.6; color: var(--white); margin-bottom: 1.5rem; }
+    .vision-card .quote::before { content: '"'; font-size: 3rem; color: var(--blue-electric); line-height: 0; vertical-align: -0.6rem; margin-right: 0.3rem; }
+    .vision-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .vstat { text-align: center; padding: 1rem; background: rgba(26,107,255,0.1); border-radius: 10px; }
+    .vstat-num { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, var(--white), var(--blue-electric)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .vstat-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+    /* TEAM */
+    .team-section { margin-bottom: 5rem; }
+    .team-section h2 { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+    .team-section .sub { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2.5rem; }
+    .team-grid { display: grid; grid-template-columns:1fr; gap: 1.5rem; }
+    .member-card {
+      background: var(--glass); border: 1px solid var(--border); border-radius: 16px;
+      padding: 2rem 1.5rem; text-align: center; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      transition: all 0.3s;
+    }
+    .member-card:hover { border-color: var(--blue-electric); transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+    .member-avatar {
+      width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 1rem;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      background: linear-gradient(135deg, rgba(26,107,255,0.3), rgba(0,229,255,0.2));
+      border: 2px solid var(--border);
+    }
+    .member-card h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
+    .member-role { font-size: 0.8rem; color: var(--blue-electric); font-weight: 500; margin-bottom: 0.8rem; }
+    .member-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* VALUES */
+    .values-section { }
+    .values-section h2 { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+    .values-section .sub { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2.5rem; }
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .value-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1.5rem; background: var(--glass); border: 1px solid var(--border); border-radius: 12px; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: all 0.3s; }
+    .value-item:hover { border-color: rgba(0,229,255,0.3); }
+    .value-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .value-text h3 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .value-text p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
+
+    footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 2.5rem 4rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    footer p { font-size: 0.82rem; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.82rem; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--white); }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+   @media(max-width:768px){
+
+    nav{
+        padding:1rem;
+    }
+
+    .menu-toggle{
+        display:block;
+    }
+
+    .nav-cta{
+        display:none;
+    }
+
+    .nav-links{
+        display:none;
+        flex-direction:column;
+        position:absolute;
+        top:70px;
+        left:0;
+        width:100%;
+        background:#0a1628;
+        padding:1.5rem;
+        text-align:center;
+        gap:1rem;
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .vision-section{
+        grid-template-columns:1fr;
+        gap:2rem;
+    }
+
+    .team-grid{
+        grid-template-columns:1fr;
+    }
+
+    .values-grid{
+        grid-template-columns:1fr;
+    }
+
+    .vision-stats{
+        grid-template-columns:1fr;
+    }
+
+    .page-hero{
+        padding:8rem 1rem 4rem;
+    }
+
+    .about-content{
+        padding:1rem;
+    }
+
+    footer{
+        padding:2rem 1rem;
+        flex-direction:column;
+        text-align:center;
+    }
+}
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-orb orb1"></div>
+  <div class="bg-orb orb2"></div>
+
+  <nav>
+    <div class="logo">ProjeXpert</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="features.html">Fonctionnalités</a></li>
+      <li><a href="about.html" class="active">À propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Démarrer →</a>
+    <div class="menu-toggle">☰</div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="section-label">À propos</div>
+    <h1>L'équipe derrière<br><span>ProjeXpert</span></h1>
+    <p>Nous sommes une équipe passionnée par l'innovation, déterminée à révolutionner la gestion de projets avec l'intelligence artificielle.</p>
+  </div>
+
+  <div class="about-content">
+
+    <!-- VISION -->
+    <div class="vision-section reveal">
+      <div class="vision-text">
+        <div class="section-label">Notre vision</div>
+        <h2>Rendre la gestion de projets <span>accessible à tous</span></h2>
+        <p>Nous croyons que chaque équipe, quelle que soit sa taille, mérite des outils puissants pour réussir ses projets. C'est pourquoi nous avons créé ProjeXpert.</p>
+        <p>Notre mission est de combiner intelligence artificielle et simplicité d'utilisation pour transformer la façon dont les équipes collaborent et livrent leurs projets.</p>
+      </div>
+      <div class="vision-card">
+        <div class="quote">L'IA ne remplace pas les équipes, elle les rend extraordinaires.</div>
+        <div class="vision-stats">
+          <div class="vstat"><div class="vstat-num">2024</div><div class="vstat-label">Année de création</div></div>
+          <div class="vstat"><div class="vstat-num">4</div><div class="vstat-label">Membres fondateurs</div></div>
+          <div class="vstat"><div class="vstat-num">100%</div><div class="vstat-label">Made in Sénégal</div></div>
+          <div class="vstat"><div class="vstat-num">∞</div><div class="vstat-label">Ambition</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEAM -->
+    <div class="team-section reveal">
+      <div class="section-label">Notre équipe</div>
+      <h2>Des esprits brillants, une vision commune</h2>
+      <p class="sub">Quatre étudiants passionnés du Groupe ISI, unis par l'amour de la tech et de l'innovation.</p>
+      <div class="team-grid">
+        <div class="member-card">
+          <div class="member-avatar">🎯</div>
+          <h3>Chef de Projet</h3>
+          <div class="member-role">Coordinateur</div>
+          <p class="member-desc">Supervise la vision globale, coordonne l'équipe et assure la livraison dans les délais.</p>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">💻</div>
+          <h3>Lead Developer</h3>
+          <div class="member-role">Frontend Senior</div>
+          <p class="member-desc">Architecture technique, intégration UI/UX et qualité du code sur l'ensemble du projet.</p>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">🎨</div>
+          <h3>Dev Frontend</h3>
+          <div class="member-role">UI & Contenu</div>
+          <p class="member-desc">Création des interfaces utilisateur, animations et rédaction du contenu applicatif.</p>
+        </div>
+        <div class="member-card">
+          <div class="member-avatar">🔧</div>
+          <h3>DevOps</h3>
+          <div class="member-role">GitHub & Infra</div>
+          <p class="member-desc">Gestion du repository, déploiement, README et maintien de la cohérence du projet.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- VALUES -->
+    <div class="values-section reveal">
+      <div class="section-label">Nos valeurs</div>
+      <h2>Ce qui nous guide chaque jour</h2>
+      <p class="sub">Des principes forts qui définissent notre façon de travailler et de construire.</p>
+      <div class="values-grid">
+        <div class="value-item">
+          <div class="value-icon">🚀</div>
+          <div class="value-text"><h3>Innovation</h3><p>Nous cherchons constamment de nouvelles façons de résoudre les problèmes avec créativité et technologie.</p></div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">🤝</div>
+          <div class="value-text"><h3>Collaboration</h3><p>Nous croyons que les meilleures solutions naissent de la coopération et du partage des connaissances.</p></div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">✨</div>
+          <div class="value-text"><h3>Excellence</h3><p>Nous visons la qualité dans chaque ligne de code, chaque interface et chaque interaction utilisateur.</p></div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">🌍</div>
+          <div class="value-text"><h3>Impact local</h3><p>Fiers de construire depuis le Sénégal, pour l'Afrique et le monde entier.</p></div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">🔍</div>
+          <div class="value-text"><h3>Transparence</h3><p>Nous communiquons ouvertement avec nos utilisateurs et au sein de notre équipe.</p></div>
+        </div>
+        <div class="value-item">
+          <div class="value-icon">📚</div>
+          <div class="value-text"><h3>Apprentissage continu</h3><p>Chaque projet est une opportunité d'apprendre, de grandir et de s'améliorer ensemble.</p></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="logo">ProjeXpert</div>
+    <p>© 2026 ProjeXpert. Tous droits réservés.</p>
+    <div class="footer-links">
+      <a href="index.html">Accueil</a>
+      <a href="features.html">Fonctionnalités</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+  <script>
+const toggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+toggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+</script>
+</body>
+</html>

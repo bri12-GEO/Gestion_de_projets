@@ -16,24 +16,14 @@
     }
     html { scroll-behavior: smooth; }
     body { font-family: 'DM Sans', sans-serif; background: var(--blue-deep); color: var(--white); overflow-x: hidden; }
-    .bg-grid {
-      position: fixed; inset: 0; z-index: 0;
-      background-image: linear-gradient(rgba(26,107,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(26,107,255,0.04) 1px, transparent 1px);
-      background-size: 60px 60px; pointer-events: none;
-    }
+    .bg-grid { position: fixed; inset: 0; z-index: 0; background-image: linear-gradient(rgba(26,107,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(26,107,255,0.04) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
     .bg-orb { position: fixed; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
     .orb1 { width: 500px; height: 500px; background: rgba(26,107,255,0.1); top: -100px; left: -100px; animation: float1 9s ease-in-out infinite; }
     .orb2 { width: 350px; height: 350px; background: rgba(0,229,255,0.07); bottom: 0; right: 0; animation: float2 11s ease-in-out infinite; }
     @keyframes float1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(30px,30px)} }
     @keyframes float2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-20px,-20px)} }
 
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 4rem;
-      background: rgba(10,22,40,0.85); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-    }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 4rem; background: rgba(10,22,40,0.85); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
     .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; background: linear-gradient(135deg, var(--blue-electric), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
     .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; position: relative; }
@@ -42,17 +32,10 @@
     .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
     .nav-cta { padding: 0.55rem 1.4rem; border-radius: 6px; background: var(--blue-bright); color: var(--white); font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: all 0.3s; border: 1px solid transparent; }
     .nav-cta:hover { background: transparent; border-color: var(--blue-bright); color: var(--blue-electric); }
-    .menu-toggle{
-    display:none;
-    font-size:2rem;
-    color:white;
-    cursor:pointer;
-}
+    /* FIX: menu-toggle caché par défaut, visible uniquement via media query */
+    .menu-toggle { display: none; font-size: 2rem; color: white; cursor: pointer; }
 
-    .page-hero {
-      position: relative; z-index: 1;
-      padding: 10rem 2rem 5rem; text-align: center;
-    }
+    .page-hero { position: relative; z-index: 1; padding: 10rem 2rem 5rem; text-align: center; }
     .page-hero .section-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue-electric); font-weight: 600; margin-bottom: 1rem; }
     .page-hero h1 { font-family: 'Syne', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.03em; animation: fadeUp 0.8s ease both; }
     .page-hero h1 span { background: linear-gradient(135deg, var(--blue-electric), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -61,10 +44,7 @@
     .features-main { position: relative; z-index: 1; padding: 2rem 2rem 6rem; max-width: 1100px; margin: 0 auto; }
 
     .features-big { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem; }
-    .feat-big {
-      background: var(--glass); border: 1px solid var(--border); border-radius: 16px;
-      padding: 2rem; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: all 0.3s;
-    }
+    .feat-big { background: var(--glass); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: all 0.3s; }
     .feat-big:hover { border-color: var(--blue-electric); transform: translateY(-6px); box-shadow: 0 25px 50px rgba(0,0,0,0.3); }
     .feat-big .icon { font-size: 2.5rem; margin-bottom: 1.2rem; display: block; }
     .feat-big h3 { font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.6rem; }
@@ -72,11 +52,7 @@
     .feat-tag { display: inline-block; margin-top: 1rem; padding: 0.25rem 0.75rem; border-radius: 100px; background: rgba(26,107,255,0.15); border: 1px solid var(--border); font-size: 0.72rem; color: var(--blue-electric); letter-spacing: 0.05em; }
 
     .features-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    .feat-row-item {
-      display: flex; gap: 1.2rem; align-items: flex-start;
-      background: var(--glass); border: 1px solid var(--border); border-radius: 12px;
-      padding: 1.5rem; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: all 0.3s;
-    }
+    .feat-row-item { display: flex; gap: 1.2rem; align-items: flex-start; background: var(--glass); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: all 0.3s; }
     .feat-row-item:hover { border-color: rgba(0,229,255,0.3); }
     .feat-row-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 0.2rem; }
     .feat-row-text h3 { font-family: 'Syne', sans-serif; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
@@ -86,6 +62,7 @@
 
     .compare-section { margin: 0 auto 4rem; }
     .compare-section h2 { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem; text-align: center; }
+    .table-container { overflow-x: auto; }
     table { width: 100%; border-collapse: collapse; }
     th, td { padding: 1rem 1.2rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.88rem; }
     thead th { background: rgba(26,107,255,0.1); color: var(--blue-electric); font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.82rem; letter-spacing: 0.05em; text-transform: uppercase; }
@@ -102,70 +79,24 @@
     @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
     .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-  .menu-toggle{
-    display:block;
-}
-@media (max-width: 768px) {
-  
-    .nav-cta{
-    display:none;
-}
 
-.nav-links{
-    display:none;
-    position:absolute;
-    top:70px;
-    left:0;
-    width:100%;
-    background:#0a1628;
-    flex-direction:column;
-    padding:1.5rem;
-    gap:1rem;
-    text-align:center;
-}
-
-.nav-links.active{
-    display:flex;
-}
-}
-.table-container{
-    overflow-x:auto;
-}
-@media(max-width:768px){
-
-    .orb1{
-        width:250px;
-        height:250px;
+    @media(max-width:768px) {
+      nav { padding: 1rem; }
+      /* FIX: hamburger visible en mobile seulement */
+      .menu-toggle { display: block; }
+      .nav-cta { display: none; }
+      .nav-links { display: none; position: absolute; top: 70px; left: 0; width: 100%; background: #0a1628; flex-direction: column; padding: 1.5rem; gap: 1rem; text-align: center; }
+      .nav-links.active { display: flex; }
+      .page-hero { padding: 8rem 1rem 4rem; }
+      .page-hero p { font-size: 1rem; }
+      .features-big { grid-template-columns: 1fr; }
+      .features-row { grid-template-columns: 1fr; }
+      .feat-big { padding: 1.5rem; }
+      .feat-row-item { padding: 1rem; }
+      .orb1 { width: 250px; height: 250px; }
+      .orb2 { width: 180px; height: 180px; }
+      footer { padding: 2rem 1rem; flex-direction: column; text-align: center; }
     }
-
-    .orb2{
-        width:180px;
-        height:180px;
-    }
-
-}
-@media(max-width:768px){
-
-    .page-hero{
-        padding:8rem 1rem 4rem;
-    }
-
-    .page-hero p{
-        font-size:1rem;
-    }
-
-}
-@media(max-width:768px){
-
-    .feat-big{
-        padding:1.5rem;
-    }
-
-    .feat-row-item{
-        padding:1rem;
-    }
-
-}
   </style>
 </head>
 <body>
@@ -216,45 +147,27 @@
     <div class="features-row reveal">
       <div class="feat-row-item">
         <div class="feat-row-icon">👥</div>
-        <div class="feat-row-text">
-          <h3>Collaboration en temps réel</h3>
-          <p>Commentaires, mentions, partage de fichiers et édition simultanée pour une vraie synergie d'équipe.</p>
-        </div>
+        <div class="feat-row-text"><h3>Collaboration en temps réel</h3><p>Commentaires, mentions, partage de fichiers et édition simultanée pour une vraie synergie d'équipe.</p></div>
       </div>
       <div class="feat-row-item">
         <div class="feat-row-icon">⚡</div>
-        <div class="feat-row-text">
-          <h3>Automatisation des tâches</h3>
-          <p>Créez des workflows automatisés pour les tâches répétitives et concentrez-vous sur ce qui compte vraiment.</p>
-        </div>
+        <div class="feat-row-text"><h3>Automatisation des tâches</h3><p>Créez des workflows automatisés pour les tâches répétitives et concentrez-vous sur ce qui compte vraiment.</p></div>
       </div>
       <div class="feat-row-item">
         <div class="feat-row-icon">🔒</div>
-        <div class="feat-row-text">
-          <h3>Sécurité avancée</h3>
-          <p>Chiffrement de bout en bout, contrôle d'accès granulaire et conformité RGPD pour protéger vos données.</p>
-        </div>
+        <div class="feat-row-text"><h3>Sécurité avancée</h3><p>Chiffrement de bout en bout, contrôle d'accès granulaire et conformité RGPD pour protéger vos données.</p></div>
       </div>
       <div class="feat-row-item">
         <div class="feat-row-icon">📱</div>
-        <div class="feat-row-text">
-          <h3>Application mobile</h3>
-          <p>Restez connecté à vos projets où que vous soyez grâce à nos applications iOS et Android.</p>
-        </div>
+        <div class="feat-row-text"><h3>Application mobile</h3><p>Restez connecté à vos projets où que vous soyez grâce à nos applications iOS et Android.</p></div>
       </div>
       <div class="feat-row-item">
         <div class="feat-row-icon">📅</div>
-        <div class="feat-row-text">
-          <h3>Planification intelligente</h3>
-          <p>Diagrammes de Gantt, sprints agile et jalons pour une planification précise et flexible.</p>
-        </div>
+        <div class="feat-row-text"><h3>Planification intelligente</h3><p>Diagrammes de Gantt, sprints agile et jalons pour une planification précise et flexible.</p></div>
       </div>
       <div class="feat-row-item">
         <div class="feat-row-icon">📈</div>
-        <div class="feat-row-text">
-          <h3>Rapports avancés</h3>
-          <p>Générez des rapports détaillés et exportez-les en PDF, Excel ou partagez-les directement avec vos clients.</p>
-        </div>
+        <div class="feat-row-text"><h3>Rapports avancés</h3><p>Générez des rapports détaillés et exportez-les en PDF, Excel ou partagez-les directement avec vos clients.</p></div>
       </div>
     </div>
 
@@ -263,22 +176,22 @@
     <div class="compare-section reveal">
       <h2>ProjeXpert vs les autres</h2>
       <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Fonctionnalité</th>
-            <th>ProjeXpert</th>
-            <th>Concurrents classiques</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>IA Prédictive intégrée</td><td><span class="check">✓ Inclus</span></td><td><span class="cross">✗ Non disponible</span></td></tr>
-          <tr><td>Collaboration temps réel</td><td><span class="check">✓ Illimitée</span></td><td><span class="cross">✗ Limitée</span></td></tr>
-          <tr><td>Intégrations</td><td><span class="check">✓ 50+ apps</span></td><td><span class="cross">✗ 10-15 apps</span></td></tr>
-          <tr><td>Support multilingue</td><td><span class="check">✓ 20 langues</span></td><td><span class="cross">✗ Anglais seulement</span></td></tr>
-          <tr><td>API publique</td><td><span class="check">✓ Complète</span></td><td><span class="cross">✗ Basique</span></td></tr>
-        </tbody>
-      </table>
+        <table>
+          <thead>
+            <tr>
+              <th>Fonctionnalité</th>
+              <th>ProjeXpert</th>
+              <th>Concurrents classiques</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>IA Prédictive intégrée</td><td><span class="check">✓ Inclus</span></td><td><span class="cross">✗ Non disponible</span></td></tr>
+            <tr><td>Collaboration temps réel</td><td><span class="check">✓ Illimitée</span></td><td><span class="cross">✗ Limitée</span></td></tr>
+            <tr><td>Intégrations</td><td><span class="check">✓ 50+ apps</span></td><td><span class="cross">✗ 10-15 apps</span></td></tr>
+            <tr><td>Support multilingue</td><td><span class="check">✓ 20 langues</span></td><td><span class="cross">✗ Anglais seulement</span></td></tr>
+            <tr><td>API publique</td><td><span class="check">✓ Complète</span></td><td><span class="cross">✗ Basique</span></td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
@@ -298,14 +211,10 @@
       entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
-  <script>
-const toggle = document.querySelector('.menu-toggle');
-const navLinks = document.querySelector('.nav-links');
 
-toggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
-</script>
+    const toggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+  </script>
 </body>
 </html>

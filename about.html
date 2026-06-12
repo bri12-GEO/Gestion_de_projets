@@ -32,12 +32,8 @@
     .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
     .nav-cta { padding: 0.55rem 1.4rem; border-radius: 6px; background: var(--blue-bright); color: var(--white); font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: all 0.3s; border: 1px solid transparent; }
     .nav-cta:hover { background: transparent; border-color: var(--blue-bright); color: var(--blue-electric); }
-    .menu-toggle{
-    display:none;
-    font-size:2rem;
-    color:white;
-    cursor:pointer;
-}
+    /* FIX: menu-toggle uniquement en mobile */
+    .menu-toggle { display: none; font-size: 2rem; color: white; cursor: pointer; }
 
     .page-hero { position: relative; z-index: 1; padding: 10rem 2rem 5rem; text-align: center; }
     .section-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue-electric); font-weight: 600; margin-bottom: 1rem; }
@@ -52,10 +48,7 @@
     .vision-text h2 { font-family: 'Syne', sans-serif; font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1.2rem; line-height: 1.2; }
     .vision-text h2 span { background: linear-gradient(135deg, var(--blue-electric), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .vision-text p { color: var(--text-muted); line-height: 1.8; font-size: 0.95rem; font-weight: 300; margin-bottom: 1rem; }
-    .vision-card {
-      background: var(--glass); border: 1px solid var(--border); border-radius: 20px;
-      padding: 2.5rem; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-    }
+    .vision-card { background: var(--glass); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
     .vision-card .quote { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 600; line-height: 1.6; color: var(--white); margin-bottom: 1.5rem; }
     .vision-card .quote::before { content: '"'; font-size: 3rem; color: var(--blue-electric); line-height: 0; vertical-align: -0.6rem; margin-right: 0.3rem; }
     .vision-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
@@ -63,24 +56,14 @@
     .vstat-num { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; background: linear-gradient(135deg, var(--white), var(--blue-electric)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .vstat-label { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem; }
 
-    /* TEAM */
+    /* TEAM — FIX: 2 colonnes sur desktop, 1 sur mobile */
     .team-section { margin-bottom: 5rem; }
     .team-section h2 { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
     .team-section .sub { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2.5rem; }
-    .team-grid { display: grid; grid-template-columns:1fr; gap: 1.5rem; }
-    .member-card {
-      background: var(--glass); border: 1px solid var(--border); border-radius: 16px;
-      padding: 2rem 1.5rem; text-align: center; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-      transition: all 0.3s;
-    }
+    .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .member-card { background: var(--glass); border: 1px solid var(--border); border-radius: 16px; padding: 2rem 1.5rem; text-align: center; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: all 0.3s; }
     .member-card:hover { border-color: var(--blue-electric); transform: translateY(-6px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-    .member-avatar {
-      width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 1rem;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2rem;
-      background: linear-gradient(135deg, rgba(26,107,255,0.3), rgba(0,229,255,0.2));
-      border: 2px solid var(--border);
-    }
+    .member-avatar { width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem; background: linear-gradient(135deg, rgba(26,107,255,0.3), rgba(0,229,255,0.2)); border: 2px solid var(--border); }
     .member-card h3 { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; }
     .member-role { font-size: 0.8rem; color: var(--blue-electric); font-weight: 500; margin-bottom: 0.8rem; }
     .member-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; }
@@ -105,68 +88,22 @@
     @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
     .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
-   @media(max-width:768px){
 
-    nav{
-        padding:1rem;
+    @media(max-width:768px){
+      nav { padding: 1rem; }
+      .menu-toggle { display: block; }
+      .nav-cta { display: none; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: #0a1628; padding: 1.5rem; text-align: center; gap: 1rem; }
+      .nav-links.active { display: flex; }
+      .vision-section { grid-template-columns: 1fr; gap: 2rem; }
+      /* FIX: team-grid en 1 colonne sur mobile */
+      .team-grid { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: 1fr; }
+      .vision-stats { grid-template-columns: 1fr 1fr; }
+      .page-hero { padding: 8rem 1rem 4rem; }
+      .about-content { padding: 1rem; }
+      footer { padding: 2rem 1rem; flex-direction: column; text-align: center; }
     }
-
-    .menu-toggle{
-        display:block;
-    }
-
-    .nav-cta{
-        display:none;
-    }
-
-    .nav-links{
-        display:none;
-        flex-direction:column;
-        position:absolute;
-        top:70px;
-        left:0;
-        width:100%;
-        background:#0a1628;
-        padding:1.5rem;
-        text-align:center;
-        gap:1rem;
-    }
-
-    .nav-links.active{
-        display:flex;
-    }
-
-    .vision-section{
-        grid-template-columns:1fr;
-        gap:2rem;
-    }
-
-    .team-grid{
-        grid-template-columns:1fr;
-    }
-
-    .values-grid{
-        grid-template-columns:1fr;
-    }
-
-    .vision-stats{
-        grid-template-columns:1fr;
-    }
-
-    .page-hero{
-        padding:8rem 1rem 4rem;
-    }
-
-    .about-content{
-        padding:1rem;
-    }
-
-    footer{
-        padding:2rem 1rem;
-        flex-direction:column;
-        text-align:center;
-    }
-}
   </style>
 </head>
 <body>
@@ -296,14 +233,10 @@
       entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
-  <script>
-const toggle = document.querySelector('.menu-toggle');
-const navLinks = document.querySelector('.nav-links');
 
-toggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});
-</script>
+    const toggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+  </script>
 </body>
 </html>
